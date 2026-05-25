@@ -1,0 +1,175 @@
+/* Tailwind Directives */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom Base Styles */
+@layer base {
+    html {
+        scroll-behavior: smooth;
+    }
+    
+    body {
+        @apply antialiased;
+        text-rendering: optimizeLegibility;
+    }
+}
+
+/* Custom Components */
+@layer components {
+    .btn-primary {
+        @apply px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl transition-colors;
+    }
+    
+    .card {
+        @apply bg-white rounded-2xl p-6 shadow-lg;
+    }
+}
+
+/* Custom Utilities */
+@layer utilities {
+    .text-gradient {
+        background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+}
+
+/* =============================================
+   BACKGROUND ANIMATION - Crypto Theme
+   Lightweight, GPU-accelerated, mobile-safe
+   ============================================= */
+
+/* Container animasi */
+.bg-animation-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+/* Gradient ambient background */
+.bg-gradient-ambient {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at top, rgba(16, 185, 129, 0.08), transparent 50%),
+                radial-gradient(ellipse at bottom right, rgba(6, 182, 212, 0.08), transparent 50%),
+                radial-gradient(ellipse at bottom left, rgba(59, 130, 246, 0.08), transparent 50%);
+    animation: gradientPulse 20s ease-in-out infinite;
+}
+
+/* Orb / Shape floating */
+.bg-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    opacity: 0.5;
+    animation: float 25s infinite ease-in-out;
+    will-change: transform;
+}
+
+.orb-1 {
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(16, 185, 129, 0.3), transparent 70%);
+    top: -100px;
+    right: -100px;
+    animation-delay: 0s;
+}
+
+.orb-2 {
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(6, 182, 212, 0.3), transparent 70%);
+    bottom: -50px;
+    left: 10%;
+    animation-delay: -8s;
+}
+
+.orb-3 {
+    width: 250px;
+    height: 250px;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.3), transparent 70%);
+    top: 40%;
+    right: 20%;
+    animation-delay: -15s;
+}
+
+/* Keyframes */
+@keyframes float {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    25% { transform: translate(30px, -20px) scale(1.05); }
+    50% { transform: translate(-15px, 30px) scale(0.95); }
+    75% { transform: translate(-30px, -15px) scale(1.02); }
+}
+
+@keyframes gradientPulse {
+    0%, 100% { opacity: 0.8; }
+    50% { opacity: 1; }
+}
+
+/* Mobile optimization: disable animation di layar kecil */
+@media (max-width: 768px) {
+    .bg-animation-container {
+        display: none;
+    }
+}
+
+/* Accessibility: respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+    .bg-animation-container,
+    .bg-orb,
+    .bg-gradient-ambient {
+        animation: none !important;
+        transform: none !important;
+    }
+}
+
+/* Grid pattern untuk fallback */
+.crypto-grid {
+    background-image: 
+        linear-gradient(rgba(16, 185, 129, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(16, 185, 129, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+}
+
+/* =============================================
+   UTILITY CLASSES
+   ============================================= */
+
+/* Line clamp untuk truncate text */
+.line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Smooth transitions */
+.transition-all {
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms;
+}
+
+/* Hover effects */
+.hover-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}

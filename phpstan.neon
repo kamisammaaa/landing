@@ -1,0 +1,25 @@
+includes:
+    - vendor/larastan/larastan/extension.neon
+    - vendor/phpstan/phpstan-deprecation-rules/rules.neon
+
+parameters:
+    level: 6
+
+    paths:
+        - app
+        - config
+        - database/factories
+        - database/seeders
+        - routes
+        - resources
+
+    excludePaths:
+        - database/migrations/*
+        - bootstrap/cache/*
+        - storage/*
+        - vendor/*
+        - resources/views/**/*.blade.php
+
+    scanDirectories:
+        - config
+

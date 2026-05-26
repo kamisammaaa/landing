@@ -13,3 +13,5 @@
 /public/js
 /bootstrap/cache
 .phpunit.result.cache
+*.sqlite
+*.sqlite-journal

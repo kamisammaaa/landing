@@ -13,12 +13,12 @@ use App\Http\Controllers\PublicController;
 */
 
 // =============================================================================
-// í¿  HOMEPAGE
+// ï¿½ï¿½ï¿½ HOMEPAGE
 // =============================================================================
 Route::get('/', [PublicController::class, 'home'])->name('home');
 
 // =============================================================================
-// í³‹ COMPANY PROFILE
+// ï¿½ï¿½ï¿½ COMPANY PROFILE
 // =============================================================================
 Route::get('/profil', [PublicController::class, 'profile'])->name('profile');
 
@@ -29,7 +29,7 @@ Route::redirect('/fasilitas', '/profil#fasilitas', 301);
 Route::redirect('/kontak', '/profil#kontak', 301);
 
 // =============================================================================
-// í¾“ JURUSAN
+// ï¿½ï¿½ï¿½ JURUSAN
 // =============================================================================
 Route::prefix('jurusan')->name('jurusan.')->group(function () {
     Route::get('/', [PublicController::class, 'jurusan'])->name('index');
@@ -40,7 +40,7 @@ Route::prefix('jurusan')->name('jurusan.')->group(function () {
 });
 
 // =============================================================================
-// í³° BERITA
+// ï¿½ï¿½ï¿½ BERITA
 // =============================================================================
 Route::prefix('berita')->name('berita.')->group(function () {
     Route::get('/', [PublicController::class, 'berita'])->name('index');
@@ -51,7 +51,7 @@ Route::prefix('berita')->name('berita.')->group(function () {
 });
 
 // =============================================================================
-// í¶¼ï¸ GALERI & PORTAL
+// ï¿½ï¿½ï¿½ï¸ GALERI & PORTAL
 // =============================================================================
 Route::get('/galeri', [PublicController::class, 'galeri'])->name('galeri');
 Route::get('/portal', [PublicController::class, 'portal'])->name('portal');
@@ -76,7 +76,7 @@ Route::get('/sitemap.xml', [PublicController::class, 'sitemap'])->name('sitemap'
 Route::get('/robots.txt', [PublicController::class, 'robotsTxt'])->name('robots');
 
 // =============================================================================
-// í´„ LEGACY REDIRECTS
+// ï¿½ï¿½ï¿½ LEGACY REDIRECTS
 // =============================================================================
 Route::redirect('/berita-kegiatan', '/berita', 301);
 Route::redirect('/kompetensi-keahlian', '/jurusan', 301);
@@ -86,3 +86,5 @@ Route::redirect('/daftar-jurusan', '/jurusan', 301);
 // âŒ FALLBACK
 // =============================================================================
 Route::fallback([PublicController::class, 'notFound'])->name('fallback');
+
+Route::get('/buat-storage-link', function () { \Illuminate\Support\Facades\Artisan::call('storage:link'); return 'Berhasil! Jalan pintas (symlink) untuk foto sudah dibuat.'; }); 
